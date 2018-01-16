@@ -86,9 +86,9 @@ public class NetworkManagement implements org.openbaton.nfvo.core.interfaces.Net
     //Create Network on cloud environment
     network = vim.add(vimInstance, network);
     //Create Network in NetworkRepository
-    network = networkRepository.save(network);
+    //network = networkRepository.save(network);
     //Add network to VimInstance
-    vimInstance.addNetwork(network);
+    //vimInstance.addNetwork(network);
     log.info("Created Network " + network.getName());
     log.debug("Network details: " + network);
     return network;

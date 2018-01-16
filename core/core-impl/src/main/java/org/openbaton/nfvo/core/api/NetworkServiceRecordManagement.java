@@ -1224,6 +1224,10 @@ public class NetworkServiceRecordManagement
                 }
               }
             }
+            if (!vimInstance.getType().equals("test")) {
+              boolean found = false;
+              vimManagement.refresh(vimInstance, false).get();
+            }
           }
         }
       }
