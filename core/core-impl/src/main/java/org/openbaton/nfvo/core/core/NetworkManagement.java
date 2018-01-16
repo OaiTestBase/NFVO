@@ -88,7 +88,7 @@ public class NetworkManagement implements org.openbaton.nfvo.core.interfaces.Net
     //Create Network in NetworkRepository
     //network = networkRepository.save(network);
     //Add network to VimInstance
-    //vimInstance.addNetwork(network);
+    vimInstance.addNetwork(network);
     log.info("Created Network " + network.getName());
     log.debug("Network details: " + network);
     return network;
