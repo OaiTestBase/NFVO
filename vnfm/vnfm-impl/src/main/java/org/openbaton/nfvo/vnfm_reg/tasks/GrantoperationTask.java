@@ -17,11 +17,6 @@
 
 package org.openbaton.nfvo.vnfm_reg.tasks;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
 import org.openbaton.catalogue.mano.common.Event;
 import org.openbaton.catalogue.mano.descriptor.NetworkServiceDescriptor;
 import org.openbaton.catalogue.mano.descriptor.VNFComponent;
@@ -55,6 +50,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 @Service
 @Scope("prototype")
@@ -121,7 +122,7 @@ public class GrantoperationTask extends AbstractTask {
             vnfPlacementManagement.choseRandom(
                 virtualDeploymentUnit.getVimInstanceName(),
                 virtualNetworkFunctionRecord.getProjectId());
-        performChecks(vimInstance, virtualDeploymentUnit);
+//        performChecks(vimInstance, virtualDeploymentUnit);
         nfvMessage.getVduVim().put(virtualDeploymentUnit.getId(), vimInstance);
       }
       nfvMessage.setVirtualNetworkFunctionRecord(virtualNetworkFunctionRecord);
@@ -145,16 +146,16 @@ public class GrantoperationTask extends AbstractTask {
         log.info("VimInstances chosen are: " + entry.getKey() + ": " + entry.getValue().getName());
       log.trace("VimInstances chosen are: " + vimInstancesChosen);
       if (vimInstancesChosen.size() == virtualNetworkFunctionRecord.getVdu().size()) {
-        for (Map.Entry<String, BaseVimInstance> entry : vimInstancesChosen.entrySet()) {
-          performChecks(
-              entry.getValue(),
-              virtualNetworkFunctionRecord
-                  .getVdu()
-                  .stream()
-                  .filter(vdu -> vdu.getId().equals(entry.getKey()))
-                  .findFirst()
-                  .orElseThrow(() -> new RuntimeException("That's impossible")));
-        }
+//        for (Map.Entry<String, BaseVimInstance> entry : vimInstancesChosen.entrySet()) {
+//          performChecks(
+//              entry.getValue(),
+//              virtualNetworkFunctionRecord
+//                  .getVdu()
+//                  .stream()
+//                  .filter(vdu -> vdu.getId().equals(entry.getKey()))
+//                  .findFirst()
+//                  .orElseThrow(() -> new RuntimeException("That's impossible")));
+//        }
         log.info(
             "Finished task: GrantOperation on VNFR: " + virtualNetworkFunctionRecord.getName());
 
